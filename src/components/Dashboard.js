@@ -9,6 +9,7 @@ import axios from 'axios';
 import TodoForm from './CreateTodo';
 import ViewTodos from './ViewTodos';
 import EditTodos from './EditTodos';
+import DeleteTodo from './DeleteTodo'
 
 const Container = styled.div`
   display: flex;
@@ -53,7 +54,7 @@ const Dashboard = () => {
           <div className="auth-inner">
                 {user ? (
                   <div>
-                    <h1>Welcome!</h1>
+                    <h1>ONBOARD THE TASK TRAIN!</h1>
                     <p>You are now logged in!</p>
                     <p>Do you Want to <button onClick={handleLogout}>Logout</button></p>
                 </div>
@@ -87,6 +88,15 @@ const Dashboard = () => {
           <>
 
             <EditTodos />
+          </>
+        );
+
+        case 'deletetodo':
+        return (
+          <>
+
+          <DeleteTodo/>
+
           </>
         );
       default:
@@ -129,6 +139,9 @@ const Dashboard = () => {
         <SidebarLink href="#" onClick={handleSidebarLinkClick}>
           Edit Todos
         </SidebarLink>
+        <Sidebar href = "#" onClick={handleSidebarLinkClick}>
+          Delete Todos
+        </Sidebar>
       </Sidebar>
       <MainContent>{renderView()}</MainContent>
     </Container>
