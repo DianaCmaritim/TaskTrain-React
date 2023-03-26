@@ -126,27 +126,6 @@ export default function Login() {
     }
   }
 
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-
-  //   axios.post('http://localhost:3000/users/login', {
-  //     username: username,
-  //     email: email,
-  //     password: password
-  //   })
-  //   .then(response => {
-  //     console.log(response);
-  //     // do something with the response, such as saving the user information
-  //     if (response.status === 200) {
-  //       setIsLoggedIn(true);
-  //     }
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //     setError('Invalid username/email or password');
-  //   });
-  // }
-
   const handleSubmit = event => {
     event.preventDefault();
 
