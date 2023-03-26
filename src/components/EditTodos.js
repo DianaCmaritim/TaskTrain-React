@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
-
 function EditTodoForm(props) {
-  const [title, setTitle] = useState(props.todo.title);
-  const [description, setDescription] = useState(props.todo.description);
-  const [status, setStatus] = useState(props.todo.status);
-  const [priority, setPriority] = useState(props.todo.priority);
+    const [title, setTitle] = useState(props.todo ? props.todo.title : '');
+    const [description, setDescription] = useState(props.todo ? props.todo.description : '');
+    const [status, setStatus] = useState(props.todo ? props.todo.status : '');
+    const [priority, setPriority] = useState(props.todo ? props.todo.priority : '');
+
+    // Rest of the code...
+  
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();

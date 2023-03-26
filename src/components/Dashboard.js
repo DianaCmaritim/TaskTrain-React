@@ -7,9 +7,10 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import TodoForm from './CreateTodo';
-import ViewTodos from './ViewTodos';
-import EditTodos from './EditTodos';
-import DeleteTodo from './DeleteTodo'
+import EditTodoForm from './EditTodos';
+import Todos from './DeleteTodo'
+import TodoList from './ViewTodos';
+
 
 const Container = styled.div`
   display: flex;
@@ -79,7 +80,7 @@ const Dashboard = () => {
         return (
           <>
 
-            <ViewTodos />
+            < TodoList/>
           </>
         );
 
@@ -87,7 +88,7 @@ const Dashboard = () => {
         return (
           <>
 
-            <EditTodos />
+            <EditTodoForm />
           </>
         );
 
@@ -95,7 +96,7 @@ const Dashboard = () => {
         return (
           <>
 
-          <DeleteTodo/>
+          <Todos/>
 
           </>
         );
@@ -133,13 +134,13 @@ const Dashboard = () => {
         <SidebarLink href="/createtodo" onClick={handleSidebarLinkClick}>
           Create Todo
         </SidebarLink>
-        <SidebarLink href="#" onClick={handleSidebarLinkClick}>
+        <SidebarLink href="/viewtodos" onClick={handleSidebarLinkClick}>
           View Todos
         </SidebarLink>
-        <SidebarLink href="#" onClick={handleSidebarLinkClick}>
+        <SidebarLink href="/edittodos" onClick={handleSidebarLinkClick}>
           Edit Todos
         </SidebarLink>
-        <Sidebar href = "#" onClick={handleSidebarLinkClick}>
+        <Sidebar href = "deletetodo" onClick={handleSidebarLinkClick}>
           Delete Todos
         </Sidebar>
       </Sidebar>

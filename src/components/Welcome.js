@@ -7,7 +7,7 @@ function Welcome() {
       <div className="auth-wrapper">
           <div className="auth-inner">
         <Header />
-      <h1>Welcome</h1>
+      <h1>ONBOARD THE TASK TRAIN!</h1>
     </div>
     </div>
     </div>
