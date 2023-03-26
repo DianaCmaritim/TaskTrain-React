@@ -1,66 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function TodoList() {
+function ViewTodos() {
   const [todos, setTodos] = useState([]);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
 
   useEffect(() => {
-    axios.get('/todos')
-      .then(response => {
-        setTodos(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    axios.get("https://example.com/api/todos").then((response) => {
+      setTodos(response.data);
+    });
   }, []);
-
-  const handleTitleChange = (event) => {
-    setTitle(event.target.value);
-  };
-
-  const handleDescriptionChange = (event) => {
-    setDescription(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios.post('/todos', { title, description })
-      .then(response => {
-        setTodos([...todos, response.data]);
-        setTitle('');
-        setDescription('');
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
 
   return (
     <div>
-      <h1>Todo List</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title</label>
-          <input type="text" value={title} onChange={handleTitleChange} />
-        </div>
-        <div>
-          <label>Description</label>
-          <textarea value={description} onChange={handleDescriptionChange} />
-        </div>
-        <button type="submit">Add Todo</button>
-      </form>
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>
-            <h3>{todo.title}</h3>
-            <p>{todo.description}</p>
-          </li>
-        ))}
-      </ul>
+      <h1>View Todos</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          {todos.map((todo) => (
+            <tr key={todo.id}>
+              <td>{todo.title}</td>
+              <td>{todo.description}</td>
+              <td>{todo.status}</td>
+              <td>{todo.priority}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <style jsx>{`
+        h1 {
+          font-size: 2rem;
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 2rem;
+        }
+
+        th,
+        td {
+          padding: 1rem;
+          text-align: center;
+          border-bottom: 1px solid #ddd;
+        }
+
+        th {
+          background-color: #f2f2f2;
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+
+        tr:hover {
+          background-color: #f5f5f5;
+        }
+      `}</style>
     </div>
   );
 }
 
-export default TodoList;
+export default ViewTodos;

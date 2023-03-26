@@ -5,8 +5,8 @@ function EditTodoForm(props) {
     const [status, setStatus] = useState(props.todo ? props.todo.status : '');
     const [priority, setPriority] = useState(props.todo ? props.todo.priority : '');
 
-    // Rest of the code...
-  
+    
+
 
 
   const handleSubmit = async (event) => {
