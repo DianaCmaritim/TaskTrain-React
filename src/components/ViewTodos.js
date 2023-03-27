@@ -5,7 +5,7 @@ function ViewTodos() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    axios.get("https://example.com/api/todos").then((response) => {
+    axios.get("").then((response) => {
       setTodos(response.data);
     });
   }, []);
