@@ -7,11 +7,15 @@ function Todos() {
     fetch('/todos')
       .then(res => res.json())
       .then(data => setTodos(data))
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        alert('Failed to fetch todos.');
+      });
   }, []);
 
   const deleteTodo = (id) => {
-    fetch(`/todos/${id}`, {
+    //yet to fetch
+    fetch(/*`http://localhost:3000/todos/${id}`*/ {
       method: 'DELETE'
     })
       .then(res => {
@@ -19,8 +23,15 @@ function Todos() {
           setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
         }
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        alert('Failed to delete todo.');
+      });
   };
+
+  if (todos.length === 0) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -36,5 +47,8 @@ function Todos() {
     </div>
   );
 }
+
+
+
 
 export default Todos;
