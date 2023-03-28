@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 function TodoForm() {
   const [title, setTitle] = useState('');
@@ -7,14 +8,19 @@ function TodoForm() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const user_id = sessionStorage.getItem('user_id');
-    console.log('user_id:', user_id); // log user_id
-    const response = await fetch('http://localhost:3000/todos', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ title, description, user_id }),
-    });
-    const data = await response.json();
-    console.log(data);
+    const now = new Date(); // create a new Date object
+    const nowString = now.toString(); // convert to ISO string
+    try {
+      const response = await axios.post('http://localhost:3000/todos', {
+        title: title,
+        description: description,
+        user_id: user_id,
+        time: nowString,
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error(error.response.data);
+    }
   };
 
   return (
