@@ -1,7 +1,6 @@
 ## Task Train
 This is a simple Todo app built using React. It allows you to perform CRUD (Create, Read, Update, Delete) operations on tasks.
 
-This app is live on [https://task-train-react-5j3c.vercel.app/]
 
 ### CRUD Operations
 * Create a todo - Add a new task to the list.
@@ -63,6 +62,8 @@ Usage
 
 ### Disclaimer
 The project is still under work to handle api requests to the backend for the crud operations.Signup and Login work
+
+This app is live on [https://task-train-react-5j3c.vercel.app/]
 
 
 
